@@ -7,6 +7,9 @@ In this tutorial I want to show you how to manage user profiles in Firebase
 
 You can find the videos:
 - [Part I: Speedcode to create the boilerplate](https://youtu.be/3r1X1P-0Vmo)
+
+For more infos, please check out
+- [FlutterExplained Blog](https://myracledesign.de/blog)
  
 
 ## Getting Started
