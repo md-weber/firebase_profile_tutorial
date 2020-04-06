@@ -1,5 +1,5 @@
 <a href="https://www.buymeacoffee.com/sBGXj7Pl4" target="_blank">
-[Buy us a coffee](https://img.shields.io/badge/Buy%20us%20a%20coffee-Thanks-green?style=flat)
+  https://img.shields.io/badge/Buy%20us%20a%20coffee-Thanks-green?style=flat
 </a>
 
 # Firebase Profile Tutorial
