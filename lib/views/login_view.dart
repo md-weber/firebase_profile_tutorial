@@ -1,8 +1,7 @@
 import 'package:firebaseprofiletutorial/locator.dart';
-import 'package:firebaseprofiletutorial/view_controller/auth_controller.dart';
+import 'package:firebaseprofiletutorial/repository/auth_repo.dart';
 import 'package:firebaseprofiletutorial/views/home/external_sign_in_buttons.dart';
 import 'package:firebaseprofiletutorial/views/home_view.dart';
-import 'package:firebaseprofiletutorial/views/profile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_icons/flutter_icons.dart';
@@ -87,7 +86,7 @@ class _LoginViewState extends State<LoginView> {
                             ),
                             onPressed: () async {
                               await locator
-                                  .get<AuthController>()
+                                  .get<AuthRepo>()
                                   .signInWithEmailAndPassword(
                                     email: emailController.text,
                                     password: passwordController.text,

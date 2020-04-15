@@ -1,5 +1,5 @@
 import 'package:firebaseprofiletutorial/locator.dart';
-import 'package:firebaseprofiletutorial/view_controller/auth_controller.dart';
+import 'package:firebaseprofiletutorial/repository/auth_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 
@@ -11,7 +11,7 @@ class ExternalSignInButtons extends StatelessWidget {
       children: <Widget>[
         GestureDetector(
           onTap: () {
-            locator.get<AuthController>().signInWithGoogle();
+            locator.get<AuthRepo>().signInWithGoogle();
           },
           child: CircleAvatar(
             child: Icon(
@@ -23,7 +23,7 @@ class ExternalSignInButtons extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () {
-            locator.get<AuthController>().signInWithGoogle();
+            locator.get<AuthRepo>().signInWithGoogle();
           },
           child: CircleAvatar(
             backgroundColor: Colors.white,
