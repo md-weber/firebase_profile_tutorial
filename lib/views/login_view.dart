@@ -1,5 +1,6 @@
 import 'package:firebaseprofiletutorial/locator.dart';
 import 'package:firebaseprofiletutorial/repository/auth_repo.dart';
+import 'package:firebaseprofiletutorial/view_controller/user_controller.dart';
 import 'package:firebaseprofiletutorial/views/home/external_sign_in_buttons.dart';
 import 'package:firebaseprofiletutorial/views/home_view.dart';
 import 'package:flutter/material.dart';
@@ -85,14 +86,17 @@ class _LoginViewState extends State<LoginView> {
                               style: textTheme.button,
                             ),
                             onPressed: () async {
-                              await locator
-                                  .get<AuthRepo>()
-                                  .signInWithEmailAndPassword(
-                                    email: emailController.text,
-                                    password: passwordController.text,
-                                  );
-
-                              Navigator.pushNamed(context, HomeView.route);
+                              try {
+                                await locator
+                                    .get<UserController>()
+                                    .signInWithEmailAndPassword(
+                                      email: emailController.text,
+                                      password: passwordController.text,
+                                    );
+                                Navigator.pushNamed(context, HomeView.route);
+                              } catch (e) {
+                                print("Something went wrong!");
+                              }
                             },
                           ),
                           RaisedButton.icon(

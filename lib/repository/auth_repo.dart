@@ -24,9 +24,12 @@ class AuthRepo {
     return user;
   }
 
-  Future<void> signInWithEmailAndPassword(
+  Future<UserModel> signInWithEmailAndPassword(
       {String email, String password}) async {
-    await _auth.signInWithEmailAndPassword(email: email, password: password);
+    var authResult = await _auth.signInWithEmailAndPassword(
+        email: email, password: password);
+    return UserModel(authResult.user.uid,
+        displayName: authResult.user.displayName);
   }
 
   Future<UserModel> getUser() async {

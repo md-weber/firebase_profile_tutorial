@@ -1,8 +1,11 @@
+import 'dart:io';
+
 import 'package:firebaseprofiletutorial/locator.dart';
 import 'package:firebaseprofiletutorial/models/user_model.dart';
 import 'package:firebaseprofiletutorial/view_controller/user_controller.dart';
 import 'package:firebaseprofiletutorial/views/profile/avatar.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class ProfileView extends StatefulWidget {
   static String route = "profile-view";
@@ -33,10 +36,19 @@ class _ProfileViewState extends State<ProfileView> {
                 children: <Widget>[
                   Avatar(
                     avatarUrl: _currentUser?.avatarUrl,
-                    onTap: () {},
+                    onTap: () async {
+                      File image = await ImagePicker.pickImage(
+                          source: ImageSource.gallery);
+
+                      await locator
+                          .get<UserController>()
+                          .uploadProfilePicture(image);
+
+                      setState(() {});
+                    },
                   ),
                   Text(
-                      "Hi ${_currentUser?.displayName ?? 'nice to see you here.'}"),
+                      "Hi ${_currentUser.displayName ?? 'nice to see you here.'}"),
                 ],
               ),
             ),
