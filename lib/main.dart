@@ -5,6 +5,7 @@ import 'package:firebaseprofiletutorial/views/profile_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   setupServices();
   runApp(MyApp());
 }

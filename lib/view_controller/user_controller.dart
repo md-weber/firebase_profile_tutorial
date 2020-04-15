@@ -1,10 +1,14 @@
+import 'dart:io';
+
 import 'package:firebaseprofiletutorial/locator.dart';
 import 'package:firebaseprofiletutorial/models/user_model.dart';
 import 'package:firebaseprofiletutorial/repository/auth_repo.dart';
+import 'package:firebaseprofiletutorial/repository/storage_repo.dart';
 
 class UserController {
   UserModel _currentUser;
   AuthRepo _authRepo = locator.get<AuthRepo>();
+  StorageRepo _storageRepo = locator.get<StorageRepo>();
   Future init;
 
   UserController() {
@@ -17,4 +21,8 @@ class UserController {
   }
 
   UserModel get currentUser => _currentUser;
+
+  Future<void> uploadProfilePicture(File image) async {
+    _currentUser.avatarUrl = await _storageRepo.uploadFile(image);
+  }
 }
