@@ -1,4 +1,6 @@
+import 'package:firebaseprofiletutorial/locator.dart';
 import 'package:firebaseprofiletutorial/models/user_model.dart';
+import 'package:firebaseprofiletutorial/view_controller/user_controller.dart';
 import 'package:firebaseprofiletutorial/views/profile/avatar.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +12,7 @@ class ProfileView extends StatefulWidget {
 }
 
 class _ProfileViewState extends State<ProfileView> {
-  UserModel _currentUser;
+  UserModel _currentUser = locator.get<UserController>().currentUser;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

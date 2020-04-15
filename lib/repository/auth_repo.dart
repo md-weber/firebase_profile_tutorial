@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebaseprofiletutorial/models/user_model.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthRepo {
@@ -26,5 +27,10 @@ class AuthRepo {
   Future<void> signInWithEmailAndPassword(
       {String email, String password}) async {
     await _auth.signInWithEmailAndPassword(email: email, password: password);
+  }
+
+  Future<UserModel> getUser() async {
+    var firebaseUser = await _auth.currentUser();
+    return UserModel(firebaseUser.uid, displayName: firebaseUser.displayName);
   }
 }
