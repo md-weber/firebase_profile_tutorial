@@ -25,4 +25,16 @@ class UserController {
   Future<void> uploadProfilePicture(File image) async {
     _currentUser.avatarUrl = await _storageRepo.uploadFile(image);
   }
+
+  Future<String> getDownloadUrl() async {
+    return await _storageRepo.getUserProfileImage(currentUser.uid);
+  }
+
+  Future<void> signInWithEmailAndPassword(
+      {String email, String password}) async {
+    _currentUser = await _authRepo.signInWithEmailAndPassword(
+        email: email, password: password);
+
+    _currentUser.avatarUrl = await getDownloadUrl();
+  }
 }

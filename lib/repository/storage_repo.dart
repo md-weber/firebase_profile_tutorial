@@ -20,4 +20,8 @@ class StorageRepo {
     String downloadUrl = await completedTask.ref.getDownloadURL();
     return downloadUrl;
   }
+
+  Future<String> getUserProfileImage(String uid) async {
+    return await _storage.ref().child("user/profile/$uid").getDownloadURL();
+  }
 }
