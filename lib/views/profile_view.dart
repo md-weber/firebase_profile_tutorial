@@ -1,8 +1,16 @@
+import 'package:firebaseprofiletutorial/models/user_model.dart';
+import 'package:firebaseprofiletutorial/views/profile/avatar.dart';
 import 'package:flutter/material.dart';
 
-class ProfileView extends StatelessWidget {
+class ProfileView extends StatefulWidget {
   static String route = "profile-view";
 
+  @override
+  _ProfileViewState createState() => _ProfileViewState();
+}
+
+class _ProfileViewState extends State<ProfileView> {
+  UserModel _currentUser;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,13 +29,12 @@ class ProfileView extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  Center(
-                    child: CircleAvatar(
-                      radius: 50.0,
-                      child: Icon(Icons.photo_camera),
-                    ),
+                  Avatar(
+                    avatarUrl: _currentUser?.avatarUrl,
+                    onTap: () {},
                   ),
-                  Text("Hi UsernamePlaceholder")
+                  Text(
+                      "Hi ${_currentUser?.displayName ?? 'nice to see you here.'}"),
                 ],
               ),
             ),
