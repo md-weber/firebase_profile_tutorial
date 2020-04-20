@@ -37,4 +37,9 @@ class UserController {
 
     _currentUser.avatarUrl = await getDownloadUrl();
   }
+
+  void updateDisplayName(String displayName) {
+    _currentUser.displayName = displayName;
+    _authRepo.updateDisplayName(displayName);
+  }
 }

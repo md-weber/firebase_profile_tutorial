@@ -4,6 +4,7 @@ import 'package:firebaseprofiletutorial/locator.dart';
 import 'package:firebaseprofiletutorial/models/user_model.dart';
 import 'package:firebaseprofiletutorial/view_controller/user_controller.dart';
 import 'package:firebaseprofiletutorial/views/profile/avatar.dart';
+import 'package:firebaseprofiletutorial/views/profile/manage_profile_information_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -54,46 +55,11 @@ class _ProfileViewState extends State<ProfileView> {
             ),
           ),
           Expanded(
-              flex: 2,
-              child: Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Column(
-                  children: <Widget>[
-                    TextFormField(
-                      decoration: InputDecoration(hintText: "Username"),
-                    ),
-                    SizedBox(height: 20.0),
-                    Expanded(
-                      child: Column(
-                        children: <Widget>[
-                          Text(
-                            "Manage Password",
-                            style: Theme.of(context).textTheme.display1,
-                          ),
-                          TextFormField(
-                            decoration: InputDecoration(hintText: "Password"),
-                          ),
-                          TextFormField(
-                            decoration:
-                                InputDecoration(hintText: "New Password"),
-                          ),
-                          TextFormField(
-                            decoration:
-                                InputDecoration(hintText: "Repeat Password"),
-                          )
-                        ],
-                      ),
-                    ),
-                    RaisedButton(
-                      onPressed: () {
-                        // TODO: Save somehow
-                        Navigator.pop(context);
-                      },
-                      child: Text("Save Profile"),
-                    )
-                  ],
-                ),
-              ))
+            flex: 2,
+            child: ManageProfileInformationWidget(
+              currentUser: _currentUser,
+            ),
+          )
         ],
       ),
     );

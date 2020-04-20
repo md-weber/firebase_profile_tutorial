@@ -9,11 +9,13 @@ class AuthRepo {
   AuthRepo();
 
   Future<void> signInWithGoogle() async {
-    final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
+    final GoogleSignInAccount googleUser =
+        await _googleSignIn.signIn();
     final GoogleSignInAuthentication googleAuth =
         await googleUser.authentication;
 
-    final AuthCredential credential = GoogleAuthProvider.getCredential(
+    final AuthCredential credential =
+        GoogleAuthProvider.getCredential(
       accessToken: googleAuth.accessToken,
       idToken: googleAuth.idToken,
     );
@@ -34,6 +36,15 @@ class AuthRepo {
 
   Future<UserModel> getUser() async {
     var firebaseUser = await _auth.currentUser();
-    return UserModel(firebaseUser.uid, displayName: firebaseUser.displayName);
+    return UserModel(firebaseUser.uid,
+        displayName: firebaseUser.displayName);
+  }
+
+  Future<void> updateDisplayName(String displayName) async {
+    var user = await _auth.currentUser();
+
+    user.updateProfile(
+      UserUpdateInfo()..displayName = displayName,
+    );
   }
 }
