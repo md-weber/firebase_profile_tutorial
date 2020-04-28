@@ -1,5 +1,4 @@
 import 'package:firebaseprofiletutorial/locator.dart';
-import 'package:firebaseprofiletutorial/repository/auth_repo.dart';
 import 'package:firebaseprofiletutorial/view_controller/user_controller.dart';
 import 'package:firebaseprofiletutorial/views/home/external_sign_in_buttons.dart';
 import 'package:firebaseprofiletutorial/views/home_view.dart';
@@ -45,7 +44,8 @@ class _LoginViewState extends State<LoginView> {
                 Center(
                   child: CircleAvatar(
                     backgroundColor: const Color(0x00000000),
-                    backgroundImage: AssetImage("assets/images/logo.png"),
+                    backgroundImage:
+                        AssetImage("assets/images/logo.png"),
                     radius: 50.0,
                   ),
                 ),
@@ -61,17 +61,22 @@ class _LoginViewState extends State<LoginView> {
                     padding: EdgeInsets.all(20.0),
                     child: Form(
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        mainAxisAlignment:
+                            MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment:
+                            CrossAxisAlignment.stretch,
                         children: <Widget>[
                           TextFormField(
                             keyboardType: TextInputType.emailAddress,
-                            decoration: InputDecoration(hintText: "Email"),
+                            decoration:
+                                InputDecoration(hintText: "Email"),
                             controller: emailController,
                           ),
                           TextFormField(
-                            keyboardType: TextInputType.visiblePassword,
-                            decoration: InputDecoration(hintText: "Password"),
+                            keyboardType:
+                                TextInputType.visiblePassword,
+                            decoration:
+                                InputDecoration(hintText: "Password"),
                             controller: passwordController,
                           ),
                           SizedBox(height: 10),
@@ -91,9 +96,11 @@ class _LoginViewState extends State<LoginView> {
                                     .get<UserController>()
                                     .signInWithEmailAndPassword(
                                       email: emailController.text,
-                                      password: passwordController.text,
+                                      password:
+                                          passwordController.text,
                                     );
-                                Navigator.pushNamed(context, HomeView.route);
+                                Navigator.pushNamed(
+                                    context, HomeView.route);
                               } catch (e) {
                                 print("Something went wrong!");
                               }
