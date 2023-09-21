@@ -38,12 +38,13 @@ class _ProfileViewState extends State<ProfileView> {
                   Avatar(
                     avatarUrl: _currentUser?.avatarUrl,
                     onTap: () async {
-                      File image = await ImagePicker.pickImage(
-                          source: ImageSource.gallery);
+                      XFile image = await ImagePicker().pickImage(
+                        source: ImageSource.gallery,
+                      );
 
                       await locator
                           .get<UserController>()
-                          .uploadProfilePicture(image);
+                          .uploadProfilePicture(File(image.path));
 
                       setState(() {});
                     },

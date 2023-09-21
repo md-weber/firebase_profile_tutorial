@@ -9,19 +9,16 @@ class AuthRepo {
   AuthRepo();
 
   Future<void> signInWithGoogle() async {
-    final GoogleSignInAccount googleUser =
-        await _googleSignIn.signIn();
+    final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
     final GoogleSignInAuthentication googleAuth =
         await googleUser.authentication;
 
-    final AuthCredential credential =
-        GoogleAuthProvider.getCredential(
+    final AuthCredential credential = GoogleAuthProvider.credential(
       accessToken: googleAuth.accessToken,
       idToken: googleAuth.idToken,
     );
 
-    final FirebaseUser user =
-        (await _auth.signInWithCredential(credential)).user;
+    final User user = (await _auth.signInWithCredential(credential)).user;
     print("signed in " + user.displayName);
     return user;
   }
@@ -35,27 +32,24 @@ class AuthRepo {
   }
 
   Future<UserModel> getUser() async {
-    var firebaseUser = await _auth.currentUser();
-    return UserModel(firebaseUser?.uid,
-        displayName: firebaseUser?.displayName);
+    var firebaseUser = await _auth.currentUser;
+    return UserModel(firebaseUser?.uid, displayName: firebaseUser?.displayName);
   }
 
   Future<void> updateDisplayName(String displayName) async {
-    var user = await _auth.currentUser();
+    var user = await _auth.currentUser;
 
-    user.updateProfile(
-      UserUpdateInfo()..displayName = displayName,
-    );
+    user.updateDisplayName(displayName);
   }
 
   Future<bool> validatePassword(String password) async {
-    var firebaseUser = await _auth.currentUser();
+    var firebaseUser = await _auth.currentUser;
 
-    var authCredentials = EmailAuthProvider.getCredential(
+    var authCredentials = EmailAuthProvider.credential(
         email: firebaseUser.email, password: password);
     try {
-      var authResult = await firebaseUser
-          .reauthenticateWithCredential(authCredentials);
+      var authResult =
+          await firebaseUser.reauthenticateWithCredential(authCredentials);
       return authResult.user != null;
     } catch (e) {
       print(e);
@@ -64,7 +58,7 @@ class AuthRepo {
   }
 
   Future<void> updatePassword(String password) async {
-    var firebaseUser = await _auth.currentUser();
+    var firebaseUser = await _auth.currentUser;
     firebaseUser.updatePassword(password);
   }
 }
