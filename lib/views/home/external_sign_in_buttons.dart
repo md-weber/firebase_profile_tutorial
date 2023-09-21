@@ -1,7 +1,7 @@
+import 'package:feather_icons/feather_icons.dart';
 import 'package:firebaseprofiletutorial/locator.dart';
 import 'package:firebaseprofiletutorial/repository/auth_repo.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 
 class ExternalSignInButtons extends StatelessWidget {
   @override
@@ -15,7 +15,7 @@ class ExternalSignInButtons extends StatelessWidget {
           },
           child: CircleAvatar(
             child: Icon(
-              FontAwesome5Brands.facebook,
+              FeatherIcons.facebook,
               size: 40,
             ),
             radius: 30,
@@ -28,7 +28,7 @@ class ExternalSignInButtons extends StatelessWidget {
           child: CircleAvatar(
             backgroundColor: Colors.white,
             child: Icon(
-              FontAwesome5Brands.google,
+              FeatherIcons.activity,
               size: 40,
             ),
             radius: 30,

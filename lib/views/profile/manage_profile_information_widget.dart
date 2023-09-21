@@ -59,7 +59,7 @@ class _ManageProfileInformationWidgetState
                   children: <Widget>[
                     Text(
                       "Manage Password",
-                      style: Theme.of(context).textTheme.display1,
+                      style: Theme.of(context).textTheme.displayLarge,
                     ),
                     TextFormField(
                       decoration: InputDecoration(
@@ -71,8 +71,7 @@ class _ManageProfileInformationWidgetState
                       controller: _passwordController,
                     ),
                     TextFormField(
-                      decoration:
-                          InputDecoration(hintText: "New Password"),
+                      decoration: InputDecoration(hintText: "New Password"),
                       controller: _newPasswordController,
                       obscureText: true,
                     ),
@@ -93,7 +92,7 @@ class _ManageProfileInformationWidgetState
               ),
             ),
             SizedBox(height: 10),
-            RaisedButton(
+            ElevatedButton(
               onPressed: () async {
                 var userController = locator.get<UserController>();
 
@@ -103,16 +102,15 @@ class _ManageProfileInformationWidgetState
                   userController.updateDisplayName(displayName);
                 }
 
-                checkCurrentPasswordValid =
-                    await userController.validateCurrentPassword(
-                        _passwordController.text);
+                checkCurrentPasswordValid = await userController
+                    .validateCurrentPassword(_passwordController.text);
 
                 setState(() {});
 
                 if (_formKey.currentState.validate() &&
                     checkCurrentPasswordValid) {
-                  userController.updateUserPassword(
-                      _newPasswordController.text);
+                  userController
+                      .updateUserPassword(_newPasswordController.text);
                   Navigator.pop(context);
                 }
               },

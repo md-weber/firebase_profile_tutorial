@@ -17,9 +17,9 @@ dependencies:
   firebase_storage: ^3.1.5
 
   image_picker: ^0.6.4
-  flutter_icons: ^1.0.0+1
   google_sign_in: ^4.4.0
   get_it: ^4.0.1
+  feather_icons: ^1.2.0
 
 dev_dependencies:
   flutter_test:

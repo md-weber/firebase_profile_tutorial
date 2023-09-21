@@ -1,6 +1,6 @@
+import 'package:feather_icons/feather_icons.dart';
 import 'package:firebaseprofiletutorial/views/profile_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 
 class HomeView extends StatelessWidget {
   static String route = "home";
@@ -13,7 +13,7 @@ class HomeView extends StatelessWidget {
         title: Text("Home Screen"),
         actions: <Widget>[
           IconButton(
-            icon: Icon(FontAwesome5.user),
+            icon: Icon(FeatherIcons.user),
             onPressed: () {
               Navigator.pushNamed(context, ProfileView.route);
             },
